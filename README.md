@@ -1,20 +1,22 @@
-
+![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/722855ed-6308-441d-9e7a-aa05a4759061)
 # World By Currency App
 
 ## Overview
 The World By Currency app allows users to search for countries based on their currency. Users can enter a currency code or name, and the app will fetch and display information about countries using that currency. The app includes debouncing for a smoother search experience and simple pagination to navigate through the search results.
-https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/2722199e-ca3d-4d80-ad8e-e068186c91f6
+![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/c939936e-c29c-43c8-9e14-9845401c9c3a)
+
 ## Features
 
 ### Currency Search
 - Users can enter a currency code or name in the search bar.
 - The app fetches and displays information about countries using the entered currency.
 - Debouncing is implemented to delay the search execution until a certain period has elapsed after the last input, improving performance.
+![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/c939936e-c29c-43c8-9e14-9845401c9c3a)
 
 ### Pagination
 - If the search results contain more than 10 countries, pagination controls are displayed.
 - Users can navigate through the pages to view additional search results.
-
+![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/26afb919-531f-45df-8e31-ec7cb81e2f9a)
 ## Implementation
 
 ### Debouncing
