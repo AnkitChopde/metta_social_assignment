@@ -1,4 +1,4 @@
-![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/722855ed-6308-441d-9e7a-aa05a4759061)
+
 # World By Currency App
 
 ## Overview
