@@ -35,8 +35,8 @@ The World By Currency app allows users to search for countries based on their cu
 ## Usage
 1. Clone the repository.
 2. Install dependencies using `npm install`.
-3. Run the app using `npm start`.
-4. Open the app in your browser at `http://localhost:3000`.
+3. Run the app using `npm run dev`.
+4. Open the app in your browser at `https://metta-social-assignment-phi.vercel.app`.
 
 ## Dependencies
 - React
