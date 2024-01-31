@@ -11,7 +11,8 @@ The World By Currency app allows users to search for countries based on their cu
 - Users can enter a currency code or name in the search bar.
 - The app fetches and displays information about countries using the entered currency.
 - Debouncing is implemented to delay the search execution until a certain period has elapsed after the last input, improving performance.
-![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/c939936e-c29c-43c8-9e14-9845401c9c3a)
+![image](https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/83bcfe31-b37e-49c2-8347-111eec32ffab)
+
 
 ### Pagination
 - If the search results contain more than 10 countries, pagination controls are displayed.
