@@ -3,7 +3,7 @@
 
 ## Overview
 The World By Currency app allows users to search for countries based on their currency. Users can enter a currency code or name, and the app will fetch and display information about countries using that currency. The app includes debouncing for a smoother search experience and simple pagination to navigate through the search results.
-
+https://github.com/AnkitChopde/metta_social_assignment/assets/112820279/2722199e-ca3d-4d80-ad8e-e068186c91f6
 ## Features
 
 ### Currency Search
