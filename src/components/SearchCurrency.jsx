@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const SearchCurrency = () => {
   const [query, setQuery] = useState("");
   const [countries,setCountries] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading,setLoading] = useState(false)
   const perPage = 10
 
   const buttonStyle = {
@@ -25,39 +26,59 @@ const SearchCurrency = () => {
     color: "darkgray", 
     cursor: "not-allowed",
   };
-
-
-  const fetchCountry = async () => {
-    try {
-      const country = await axios.get(`https://restcountries.com/v3.1/currency/${query}`);
-      setCountries(country.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+ 
+  
   const debounce = (func, delay) => {
     let timeoutId;
-    return function () {
-      const context = this;
-      const args = arguments;
+  
+    const debounced = function (...args) {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(context, args), delay);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
     };
+
+    debounced.cancel = () => {
+      clearTimeout(timeoutId);
+    };
+  
+    return debounced;
   };
 
-  const handleSearch = debounce(() => {
-    if (query) {
-      fetchCountry();
-    } else {
-      setCountries([]);
-    }
-  }, 500);
+const debouncedFetchCountry = useCallback(
+    debounce(async (value) => {
+      setLoading(true);
+      try {
+        const country = await axios.get(`https://restcountries.com/v3.1/currency/${value}`);
+        setCountries(country.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }, 500),
+    []
+  );
 
   useEffect(() => {
-    handleSearch();
-  }, [query, handleSearch]);
+    
+       if(query){
+        debouncedFetchCountry(query);
+       }
+       return () => debouncedFetchCountry.cancel();
+  }, [query,debouncedFetchCountry]);
 
+  useEffect(()=>{
+   
+ if(query===""){
+    console.log(query)
+    setCountries([]);
+    setPage(1)
+ }
+  },[query])
+
+ 
+console.log(countries)
   return (
     <div>
       <div
@@ -82,6 +103,7 @@ const SearchCurrency = () => {
           onChange={(e)=>setQuery(e.target.value)}
         />
       </div>
+      {loading && <p style={{textAlign:"center"}}>Loading...</p>}
       <div>
         {
             countries.length==0 ? (
@@ -91,7 +113,7 @@ const SearchCurrency = () => {
                     <div style={{width:"70%",padding:"1rem",color:"purple",margin:"auto",border:"1px solid purple",marginTop:'20px',textAlign:"center",display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"10px"}}>
                     {countries.slice((page - 1) * perPage, page * perPage).map((country)=>(
                     <>
-                    <div key={country.ccn3} style={{border:"0.1px solid green",padding:"2px"}}>
+                    <div key={country.name.common} style={{border:"0.1px solid green",padding:"2px"}}>
                     <img src={country.flags.png} alt={country.name.common} width="150px" />
                     <h2 >{country.name.common}</h2>
                     <h5>{country.capital}</h5>
